@@ -31,11 +31,7 @@ namespace prog6212_part3_ST10456157.Controllers
         {
             try
             {
-                if (!ModelState.IsValid)
-                {
-                    TempData["Error"] = "Invalid claim details.";
-                    return RedirectToAction("Index");
-                }
+                
 
                 // AUTO-CALCULATE
                 model.TotalAmount = model.HoursWorked * model.HourlyRate;

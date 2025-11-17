@@ -30,6 +30,17 @@ namespace prog6212_part3_ST10456157.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction("AllClaims");
         }
+        [HttpPost]
+        public IActionResult Reject(int id)
+        {
+            var claim = _context.Claims.Find(id);
+            if (claim != null)
+            {
+                claim.Status = "Rejected";
+                _context.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
     }
       
 }

@@ -21,7 +21,7 @@ namespace prog6212_part1_ST10456157.Controllers
             return View(claims);
         }
 
-        public async Task<IActionResult> Approve(int id)
+        public async Task<IActionResult> Verify(int id)
         {
             var claim = await _context.Claims.FindAsync(id);
             if (claim == null) return NotFound();
