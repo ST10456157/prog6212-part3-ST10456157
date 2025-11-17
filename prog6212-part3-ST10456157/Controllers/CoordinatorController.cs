@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using prog6212_part3_ST10456157.Models;
 using prog6212_part3_ST10456157.Data;
+using ClaimModel = prog6212_part3_ST10456157.Models.LecturerClaim;
+
 
 namespace prog6212_part1_ST10456157.Controllers
 {

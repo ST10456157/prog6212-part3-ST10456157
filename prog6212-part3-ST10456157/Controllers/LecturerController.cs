@@ -5,7 +5,7 @@ using prog6212_part3_ST10456157.Models;
 using prog6212_part3_ST10456157.Data;
 
 
-namespace prog6212_part1_ST10456157.Controllers
+namespace prog6212_part3_ST10456157.Controllers
 {
     public class LecturerController : Controller
     {
@@ -21,11 +21,13 @@ namespace prog6212_part1_ST10456157.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            var claims = _context.Claims.ToList();
             return View(claims);
         }
 
+
         [HttpPost]
-        public async Task<IActionResult> SubmitClaim(prog6212_part3_ST10456157.Models.Claim model, IFormFile? file)
+        public async Task<IActionResult> SubmitClaim(prog6212_part3_ST10456157.Models.LecturerClaim model, IFormFile? file)
         {
             try
             {

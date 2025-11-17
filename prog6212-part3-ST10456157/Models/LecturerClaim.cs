@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace prog6212_part3_ST10456157.Models
 {
-    public class Claim
+    public class LecturerClaim
     {
         [Key]
         public int ClaimId { get; set; }
@@ -32,4 +32,5 @@ namespace prog6212_part3_ST10456157.Models
         public string? DocumentName { get; set; }
     }
 }
+
 

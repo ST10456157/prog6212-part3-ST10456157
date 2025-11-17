@@ -1,0 +1,25 @@
+﻿@model IEnumerable<prog6212_part3_ST10456157.Models.LecturerClaim>
+
+<h2>Approved Claims</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Lecturer</th>
+            <th>Total Amount</th>
+            <th>Date Verified</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var claim in Model)
+        {
+            <tr>
+                <td>@claim.ClaimId</td>
+                <td>@claim.LecturerName</td>
+                <td>R @claim.TotalAmount</td>
+                <td>@claim.DateVerified</td>
+            </tr>
+        }
+    </tbody>
+</table>

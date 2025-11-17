@@ -2,7 +2,7 @@
 using prog6212_part3_ST10456157.Models;
 using prog6212_part3_ST10456157.Data;
 
-namespace prog6212_part1_ST10456157.Controllers
+namespace prog6212_part3_ST10456157.Controllers
 {
     public class ManagerController : Controller
     {

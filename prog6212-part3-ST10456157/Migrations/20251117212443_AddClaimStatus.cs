@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace prog6212_part3_ST10456157.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class AddClaimStatus : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,12 +18,14 @@ namespace prog6212_part3_ST10456157.Migrations
                     ClaimId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     LecturerName = table.Column<string>(type: "TEXT", nullable: false),
-                    HoursWorked = table.Column<decimal>(type: "TEXT", nullable: false),
+                    HoursWorked = table.Column<int>(type: "INTEGER", nullable: false),
                     HourlyRate = table.Column<decimal>(type: "TEXT", nullable: false),
-                    Notes = table.Column<string>(type: "TEXT", nullable: true),
-                    DocumentName = table.Column<string>(type: "TEXT", nullable: true),
+                    TotalAmount = table.Column<decimal>(type: "TEXT", nullable: false),
                     Status = table.Column<string>(type: "TEXT", nullable: false),
-                    DateSubmitted = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    DateSubmitted = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    DateVerified = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    DateApproved = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    DocumentName = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {

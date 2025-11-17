@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
+using prog6212_part3_ST10456157.Models;
 
 
     namespace prog6212_part3_ST10456157.Data
@@ -10,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
             public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
                 : base(options) { }
 
-            public DbSet<Claim> Claims { get; set; }
+            public DbSet<LecturerClaim> Claims { get; set; }
         }
     }
 

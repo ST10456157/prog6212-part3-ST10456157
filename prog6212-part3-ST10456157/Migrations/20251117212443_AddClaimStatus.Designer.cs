@@ -11,22 +11,28 @@ using prog6212_part3_ST10456157.Data;
 namespace prog6212_part3_ST10456157.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251021161200_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20251117212443_AddClaimStatus")]
+    partial class AddClaimStatus
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "9.0.10");
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.0");
 
-            modelBuilder.Entity("prog6212_part2_ST10456157.Models.Claim", b =>
+            modelBuilder.Entity("prog6212_part3_ST10456157.Models.LecturerClaim", b =>
                 {
                     b.Property<int>("ClaimId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("DateSubmitted")
+                    b.Property<DateTime?>("DateApproved")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("DateSubmitted")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("DateVerified")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("DocumentName")
@@ -35,18 +41,18 @@ namespace prog6212_part3_ST10456157.Migrations
                     b.Property<decimal>("HourlyRate")
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("HoursWorked")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("HoursWorked")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("LecturerName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Notes")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Status")
                         .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("TotalAmount")
                         .HasColumnType("TEXT");
 
                     b.HasKey("ClaimId");
