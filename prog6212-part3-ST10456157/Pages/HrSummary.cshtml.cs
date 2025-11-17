@@ -16,14 +16,19 @@ namespace prog6212_part3_ST10456157.Pages
 
         public void OnGet()
         {
-            SummaryList = _context.Claims
-                .Where(c => c.Status == "Approved")
+            var approvedClaims = _context.Claims
+    .Where(c => c.Status == "Approved")
+    .ToList(); // materialize in memory
+
+            SummaryList = approvedClaims
                 .GroupBy(c => c.LecturerName)
                 .Select(g => new HrSummaryVM
                 {
                     Lecturer = g.Key,
-                    TotalPaid = g.Sum(x => x.TotalAmount)
-                }).ToList();
+                    TotalPaid = g.Sum(x => x.TotalAmount) // decimal sum works in memory
+                })
+                .ToList();
+
         }
 
         public FileResult OnGetExport()
