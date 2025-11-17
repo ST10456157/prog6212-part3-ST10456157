@@ -31,5 +31,5 @@ namespace prog6212_part1_ST10456157.Controllers
             return RedirectToAction("AllClaims");
         }
     }
-
+      
 }
