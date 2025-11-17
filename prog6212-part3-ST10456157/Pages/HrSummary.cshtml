@@ -1,0 +1,28 @@
+﻿@page
+@model prog6212_part3_ST10456157.Pages.HrSummaryModel
+@{
+    ViewData["Title"] = "HR Claim Summary";
+}
+
+<h2>HR Claim Summary</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Lecturer</th>
+            <th>Total Paid</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.SummaryList)
+        {
+            <tr>
+                <td>@item.Lecturer</td>
+                <td>R @item.TotalPaid</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-page="/HrSummary" asp-page-handler="Export" class="btn btn-primary">Download CSV</a>
+

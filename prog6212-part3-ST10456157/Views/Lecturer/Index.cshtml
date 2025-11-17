@@ -1,0 +1,97 @@
+﻿@model IEnumerable<prog6212_part3_ST10456157.Models.Claim>
+
+<h2>Lecturer Dashboard</h2>
+
+<form asp-action="SubmitClaim" method="post" enctype="multipart/form-data">
+
+    <div class="form-group mt-3">
+        <label>Lecturer Name</label>
+        <input name="LecturerName" class="form-control" required />
+    </div>
+
+    <div class="form-group mt-3">
+        <label>Hours Worked</label>
+        <input type="number" id="HoursWorked" name="HoursWorked" class="form-control"
+               required onkeyup="calculateTotal()" />
+    </div>
+
+    <div class="form-group mt-3">
+        <label>Hourly Rate (R)</label>
+        <input type="number" id="HourlyRate" name="HourlyRate" class="form-control"
+               required onkeyup="calculateTotal()" />
+    </div>
+
+    <div class="form-group mt-3">
+        <label>Total Amount (Auto-Calculated)</label>
+        <input type="number" id="TotalAmount" name="TotalAmount" class="form-control" readonly />
+    </div>
+
+    <div class="form-group mt-3">
+        <label>Upload Supporting Document</label>
+        <input type="file" name="file" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Submit New Claim</button>
+</form>
+
+<hr />
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@TempData["Message"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<h3>My Claims</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Hours</th>
+            <th>Rate</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Document</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.ClaimId</td>
+                <td>@c.DateSubmitted?.ToShortDateString()</td>
+                <td>@c.HoursWorked</td>
+                <td>R @c.HourlyRate</td>
+                <td>R @c.TotalAmount</td>
+                <td>@c.Status</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(c.DocumentName))
+                    {
+                        <a href="~/uploads/@c.DocumentName" target="_blank">View File</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    function calculateTotal() {
+        let hours = parseFloat(document.getElementById("HoursWorked").value);
+        let rate = parseFloat(document.getElementById("HourlyRate").value);
+
+        if (!isNaN(hours) && !isNaN(rate)) {
+            document.getElementById("TotalAmount").value = (hours * rate).toFixed(2);
+        }
+    }
+</script>
+
+
+
+
+
+
