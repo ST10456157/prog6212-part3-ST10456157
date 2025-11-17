@@ -63,7 +63,7 @@ namespace prog6212_part1_ST10456157.Controllers
                         await file.CopyToAsync(fs);
                     }
 
-                    model.DocumentName = safeFileName;
+                    model.DocumentName = safeFileName;    
                 }
 
                 model.Status = "Pending";
